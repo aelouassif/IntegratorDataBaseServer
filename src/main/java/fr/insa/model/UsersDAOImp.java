@@ -32,17 +32,15 @@ public class UsersDAOImp implements UsersDAO {
     }
 
     @SuppressWarnings("unchecked")
-    public boolean exist(Users u) {
+    public Users find(Users u) {
 
         sessionObj.beginTransaction();
         List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.login='"+u.getLogin()+"' AND U.password='"+u.getPassword()+"'").list();
-        System.out.println("qlq");
 
         System.out.println("test" + personList);
-
         sessionObj.close();
 
-        return (personList.size()==1)?true:false;
+        return (personList.size()==1)?personList.get(0):new Users(null,null);
     }
 
     @SuppressWarnings("unchecked")

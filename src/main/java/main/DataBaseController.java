@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DataBaseController {
 
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/login")
     public Users greeting(@RequestParam(value="login") String login, @RequestParam(value="password") String password) {
@@ -22,11 +20,8 @@ public class DataBaseController {
 
         UsersDAOImp usersDAOImp = new UsersDAOImp();
 //        usersDAOImp.save(user);
-        boolean exist = usersDAOImp.exist(user);
-        if(exist)
-            System.out.println("exist");
-        else
-            System.out.println("noo");
+        user = usersDAOImp.find(user);
+
 
         return user;
     }
