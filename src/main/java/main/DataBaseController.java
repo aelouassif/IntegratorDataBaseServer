@@ -7,6 +7,7 @@ import fr.insa.model.UsersDAOImp;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class DataBaseController {
@@ -24,5 +25,18 @@ public class DataBaseController {
 
 
         return user;
+    }
+    @RequestMapping("/insert")
+    public void insert(@RequestParam(value="login") String login, @RequestParam(value="password") String password) {
+        ModelAndView mv = new ModelAndView();
+        Users user = new Users();
+        user.setLogin(login);
+        user.setPassword(password);
+
+        UsersDAOImp usersDAOImp = new UsersDAOImp();
+//        usersDAOImp.save(user);
+        usersDAOImp.save(user);
+
+
     }
 }
