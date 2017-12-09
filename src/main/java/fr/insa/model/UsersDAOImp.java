@@ -47,10 +47,9 @@ public class UsersDAOImp implements UsersDAO {
     @SuppressWarnings("unchecked")
     public List<Users> list() {
         sessionObj = sessionFactoryObj.openSession();
-        Session session = this.sessionFactory.openSession();
-        List<Users> personList = session.createQuery("FROM Users").list();
+        List<Users> personList = sessionObj.createQuery("FROM Users").list();
         System.out.println("qlq"+personList);
-        session.close();
+        sessionObj.close();
         return personList;
     }
 
