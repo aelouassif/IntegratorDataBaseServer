@@ -1,5 +1,6 @@
 package main;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import fr.insa.model.Users;
@@ -36,7 +37,11 @@ public class DataBaseController {
         UsersDAOImp usersDAOImp = new UsersDAOImp();
 //        usersDAOImp.save(user);
         usersDAOImp.save(user);
+    }
 
-
+    @RequestMapping("/all")
+    public List<Users> all() {
+        UsersDAOImp usersDAOImp = new UsersDAOImp();
+        return usersDAOImp.list();
     }
 }
