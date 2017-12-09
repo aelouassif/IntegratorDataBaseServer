@@ -20,11 +20,12 @@ public class UsersDAOImp implements UsersDAO {
         configObj.configure("hibernate.cfg.xml");
         ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
         sessionFactoryObj = configObj.buildSessionFactory(serviceRegistryObj);
-        sessionObj = sessionFactoryObj.openSession();
+
 
     }
 
     public void save(Users u) {
+        sessionObj = sessionFactoryObj.openSession();
         sessionObj.beginTransaction();
         sessionObj.save(u);
         sessionObj.getTransaction().commit();
@@ -33,10 +34,10 @@ public class UsersDAOImp implements UsersDAO {
 
     @SuppressWarnings("unchecked")
     public Users find(Users u) {
-
+        sessionObj = sessionFactoryObj.openSession();
         sessionObj.beginTransaction();
         List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.login='"+u.getLogin()+"' AND U.password='"+u.getPassword()+"'").list();
-
+        sessionObj.save(u);
         System.out.println("test" + personList);
         sessionObj.close();
 
@@ -45,6 +46,7 @@ public class UsersDAOImp implements UsersDAO {
 
     @SuppressWarnings("unchecked")
     public List<Users> list() {
+        sessionObj = sessionFactoryObj.openSession();
         Session session = this.sessionFactory.openSession();
         List<Users> personList = session.createQuery("FROM Users").list();
         System.out.println("qlq"+personList);
