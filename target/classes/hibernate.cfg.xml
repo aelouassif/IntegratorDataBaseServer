@@ -19,21 +19,21 @@
 		<!--&lt;!&ndash; Specifying Session Context &ndash;&gt;-->
 		<!--<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>-->
 
-		<!-- local version -->
-		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://localhost/postgres</property>
-		<property name="hibernate.connection.username">abdellah</property>
-		<property name="hibernate.connection.password">123456</property>
-		<property name="hibernate.hbm2ddl.auto">update</property>
-
-		<!--&lt;!&ndash; Heroku version  &ndash;&gt;-->
+		<!--&lt;!&ndash; local version &ndash;&gt;-->
 		<!--<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
 		<!--<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>-->
-		<!--<property name="hibernate.connection.url">jdbc:postgresql://ec2-23-21-85-76.compute-1.amazonaws.com:5432/de2akapfmcqlbh</property>-->
-		<!--<property name="hibernate.connection.username">zcyujwfdfvqhmj</property>-->
-		<!--<property name="hibernate.connection.password">3ecef56a0640a4116a314e1b02a94ded62bc2c033a527f5e2c6bae6156f2c993</property>-->
+		<!--<property name="hibernate.connection.url">jdbc:postgresql://localhost/postgres</property>-->
+		<!--<property name="hibernate.connection.username">abdellah</property>-->
+		<!--<property name="hibernate.connection.password">123456</property>-->
 		<!--<property name="hibernate.hbm2ddl.auto">update</property>-->
+
+		<!-- Heroku version  -->
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://ec2-23-21-85-76.compute-1.amazonaws.com:5432/de2akapfmcqlbh</property>
+		<property name="hibernate.connection.username">zcyujwfdfvqhmj</property>
+		<property name="hibernate.connection.password">3ecef56a0640a4116a314e1b02a94ded62bc2c033a527f5e2c6bae6156f2c993</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		<!-- Mapping With Model Class Containing Annotations -->
 		<mapping class="fr.insa.model.Users" />
