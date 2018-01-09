@@ -30,9 +30,9 @@
 		<!-- Heroku version  -->
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://ec2-23-21-85-76.compute-1.amazonaws.com:5432/de2akapfmcqlbh</property>
-		<property name="hibernate.connection.username">zcyujwfdfvqhmj</property>
-		<property name="hibernate.connection.password">3ecef56a0640a4116a314e1b02a94ded62bc2c033a527f5e2c6bae6156f2c993</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://ec2-54-217-218-80.eu-west-1.compute.amazonaws.com:5432/dmjq6jlkspc66</property>
+		<property name="hibernate.connection.username">zjmshvcrltbdjs</property>
+		<property name="hibernate.connection.password">cc1f29ad51a13acd2af6630432ae4c5755ec6703c630bc0db3e961debbbcd8a4</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		<!-- Mapping With Model Class Containing Annotations -->
