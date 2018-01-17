@@ -25,7 +25,7 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost/postgres</property>
 		<property name="hibernate.connection.username">abdellah</property>
 		<property name="hibernate.connection.password">123456</property>
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create-drop</property>
 
 		 <!--&lt;!&ndash;Heroku version&ndash;&gt;-->
 		<!--<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
@@ -37,5 +37,8 @@
 
 		<!-- Mapping With Model Class Containing Annotations -->
 		<mapping class="fr.insa.model.Users" />
+		<mapping class="fr.insa.model.Posts" />
+		<mapping class="fr.insa.model.Routes" />
+		<mapping class="fr.insa.model.Comments" />
 	</session-factory>
 </hibernate-configuration>

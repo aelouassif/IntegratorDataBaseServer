@@ -45,7 +45,7 @@ public class UsersDAOImp implements UsersDAO {
         System.out.println("test" + personList);
         sessionObj.close();
 
-        return (personList.size()==1)?personList.get(0):new Users(null,null,null,null,null);
+        return (personList.size()==1)?personList.get(0):new Users(null,null,null,null,null,null,null,null);
     }
 
     @SuppressWarnings("unchecked")

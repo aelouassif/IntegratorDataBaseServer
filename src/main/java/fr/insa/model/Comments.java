@@ -6,45 +6,26 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="Posts")
-public class Posts implements Serializable{
+@Table(name="Comments")
+public class Comments implements Serializable{
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
-    private String date;
-    private String position;
-    private String content;
-
+    private String date,position,content;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Users user;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="post")
-    private List<Comments> comment;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Posts post;
 
-    public Posts(String date, String position, String content, Users user, List<Comments> comment) {
+    public Comments(String date, String position, String content, Users user, Posts post) {
         this.date = date;
         this.position = position;
         this.content = content;
         this.user = user;
-        this.comment = comment;
-    }
-
-    public List<Comments> getComment() {
-        return comment;
-    }
-
-    public void setComment(List<Comments> comment) {
-        this.comment = comment;
-    }
-
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
+        this.post = post;
     }
 
     public int getId() {
@@ -79,7 +60,19 @@ public class Posts implements Serializable{
         this.content = content;
     }
 
-    public Posts() {
+    public Users getUser() {
+        return user;
     }
 
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public Posts getPost() {
+        return post;
+    }
+
+    public void setPost(Posts post) {
+        this.post = post;
+    }
 }

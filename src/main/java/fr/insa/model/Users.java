@@ -1,11 +1,15 @@
 package fr.insa.model;
 
 
+import javafx.geometry.Pos;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="Users")
-public class Users{
+public class Users implements Serializable{
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -18,6 +22,32 @@ public class Users{
     private String last_name;
     private String email;
 
+    @OneToMany(mappedBy="user",cascade = CascadeType.ALL)
+    private List<Posts> posts;
+    @ManyToMany(mappedBy="users",cascade = CascadeType.ALL)
+    private List<Routes> routes;
+    @OneToMany(mappedBy="user",cascade = CascadeType.ALL)
+    private List<Comments> comments;
+
+    public Users(String login, String password, String first_name, String last_name, String email, List<Posts> posts, List<Routes> routes, List<Comments> comments) {
+        this.login = login;
+        this.password = password;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.posts = posts;
+        this.routes = routes;
+        this.comments = comments;
+    }
+
+    public List<Posts> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Posts> posts) {
+        this.posts = posts;
+    }
+
     public String getFirst_name() {
         return first_name;
     }
@@ -26,13 +56,6 @@ public class Users{
         this.first_name = first_name;
     }
 
-    public Users(String login, String password, String first_name, String last_name, String email) {
-        this.login = login;
-        this.password = password;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
-    }
 
     public String getLast_name() {
         return last_name;
