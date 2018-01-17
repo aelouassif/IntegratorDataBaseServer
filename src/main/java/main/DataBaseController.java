@@ -28,11 +28,15 @@ public class DataBaseController {
         return user;
     }
     @RequestMapping("/insert")
-    public void insert(@RequestParam(value="login") String login, @RequestParam(value="password") String password) {
+    public void insert(@RequestParam(value="login") String login, @RequestParam(value="password") String password,@RequestParam(value="first_name") String first_name,
+                       @RequestParam(value="last_name") String last_name,@RequestParam(value="email") String email) {
         ModelAndView mv = new ModelAndView();
         Users user = new Users();
         user.setLogin(login);
         user.setPassword(password);
+        user.setEmail(email);
+        user.setFirst_name(first_name);
+        user.setLast_name(last_name);
 
         UsersDAOImp usersDAOImp = new UsersDAOImp();
 //        usersDAOImp.save(user);

@@ -28,6 +28,7 @@ public class UsersDAOImp implements UsersDAO {
         sessionObj = sessionFactoryObj.openSession();
         sessionObj.beginTransaction();
         sessionObj.save(u);
+        System.out.println(u);
         sessionObj.getTransaction().commit();
         sessionObj.close();
     }
@@ -41,7 +42,7 @@ public class UsersDAOImp implements UsersDAO {
         System.out.println("test" + personList);
         sessionObj.close();
 
-        return (personList.size()==1)?personList.get(0):new Users(null,null);
+        return (personList.size()==1)?personList.get(0):new Users(null,null,null,null,null);
     }
 
     @SuppressWarnings("unchecked")

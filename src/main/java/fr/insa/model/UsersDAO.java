@@ -1,8 +1,5 @@
 package fr.insa.model;
 
-
-
-
 import java.util.List;
 
 public interface UsersDAO {
