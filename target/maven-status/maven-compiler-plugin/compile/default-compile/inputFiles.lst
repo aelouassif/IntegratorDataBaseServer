@@ -3,3 +3,6 @@
 /home/abdellah/spring/IntegratorDataBaseServer/src/main/java/main/DataBaseController.java
 /home/abdellah/spring/IntegratorDataBaseServer/src/main/java/fr/insa/model/UsersDAO.java
 /home/abdellah/spring/IntegratorDataBaseServer/src/main/java/fr/insa/model/Users.java
+/home/abdellah/spring/IntegratorDataBaseServer/src/main/java/fr/insa/model/PostsDAO.java
+/home/abdellah/spring/IntegratorDataBaseServer/src/main/java/fr/insa/model/Posts.java
+/home/abdellah/spring/IntegratorDataBaseServer/src/main/java/fr/insa/model/PostsDAOImp.java

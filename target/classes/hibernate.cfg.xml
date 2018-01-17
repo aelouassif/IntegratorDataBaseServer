@@ -14,7 +14,7 @@
 		<!--<property name="hibernate.connection.username">root</property>-->
 		<!--<property name="hibernate.connection.password"></property>-->
 		<!--<property name="show_sql">true</property>-->
-		<!--<property name="hibernate.hbm2ddl.auto">update</property>-->
+		<!--<property name="hibernate.hbm2ddl.auto">create-drop</property>-->
 
 		<!--&lt;!&ndash; Specifying Session Context &ndash;&gt;-->
 		<!--<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>-->
@@ -25,7 +25,7 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost/postgres</property>
 		<property name="hibernate.connection.username">abdellah</property>
 		<property name="hibernate.connection.password">123456</property>
-		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		 <!--&lt;!&ndash;Heroku version&ndash;&gt;-->
 		<!--<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->

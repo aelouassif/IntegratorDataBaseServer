@@ -11,20 +11,19 @@ import java.util.List;
 
 public class UsersDAOImp implements UsersDAO {
 
-    private SessionFactory sessionFactory;
-    static Session sessionObj;
-    static SessionFactory sessionFactoryObj;
+    Configuration configObj;
 
     public UsersDAOImp(){
-        Configuration configObj = new Configuration();
-        configObj.configure("hibernate.cfg.xml");
-        ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
-        sessionFactoryObj = configObj.buildSessionFactory(serviceRegistryObj);
 
+        configObj = new Configuration().configure("hibernate.cfg.xml");
 
     }
 
     public void save(Users u) {
+        Session sessionObj;
+        SessionFactory sessionFactoryObj;
+
+        sessionFactoryObj = configObj.buildSessionFactory();
         sessionObj = sessionFactoryObj.openSession();
         sessionObj.beginTransaction();
         sessionObj.save(u);
@@ -35,6 +34,10 @@ public class UsersDAOImp implements UsersDAO {
 
     @SuppressWarnings("unchecked")
     public Users find(Users u) {
+        Session sessionObj;
+        SessionFactory sessionFactoryObj;
+
+        sessionFactoryObj = configObj.buildSessionFactory();
         sessionObj = sessionFactoryObj.openSession();
         sessionObj.beginTransaction();
         List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.login='"+u.getLogin()+"' AND U.password='"+u.getPassword()+"'").list();
@@ -47,6 +50,10 @@ public class UsersDAOImp implements UsersDAO {
 
     @SuppressWarnings("unchecked")
     public List<Users> list() {
+        Session sessionObj;
+        SessionFactory sessionFactoryObj;
+
+        sessionFactoryObj = configObj.buildSessionFactory();
         sessionObj = sessionFactoryObj.openSession();
         List<Users> personList = sessionObj.createQuery("FROM Users").list();
         System.out.println("qlq"+personList);
@@ -54,11 +61,4 @@ public class UsersDAOImp implements UsersDAO {
         return personList;
     }
 
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 }
