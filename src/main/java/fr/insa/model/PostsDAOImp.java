@@ -7,12 +7,10 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 public class PostsDAOImp implements PostsDAO {
-    Configuration configObj;
+    private Configuration configObj;
 
     public PostsDAOImp(){
-
-        configObj = new Configuration().configure("hibernate.cfg.xml");
-
+        configObj = ConfigObj.getConfigObj();
     }
 
     @SuppressWarnings("unchecked")

@@ -11,11 +11,10 @@ import java.util.List;
 
 public class UsersDAOImp implements UsersDAO {
 
-    static Configuration configObj;
+    private Configuration configObj;
 
     public UsersDAOImp(){
-        if(configObj==null)
-            configObj = new Configuration().configure("hibernate.cfg.xml");
+        configObj = ConfigObj.getConfigObj();
     }
 
     public void save(Users u) {
