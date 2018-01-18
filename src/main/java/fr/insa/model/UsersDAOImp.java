@@ -21,10 +21,7 @@ public class UsersDAOImp implements UsersDAO {
 
     public void save(Users u) {
         Session sessionObj;
-        SessionFactory sessionFactoryObj;
-
-        sessionFactoryObj = configObj.buildSessionFactory();
-        sessionObj = sessionFactoryObj.openSession();
+        sessionObj = configObj.buildSessionFactory().openSession();
         sessionObj.beginTransaction();
         sessionObj.save(u);
         System.out.println(u);
@@ -35,10 +32,8 @@ public class UsersDAOImp implements UsersDAO {
     @SuppressWarnings("unchecked")
     public Users find(Users u) {
         Session sessionObj;
-        SessionFactory sessionFactoryObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
 
-        sessionFactoryObj = configObj.buildSessionFactory();
-        sessionObj = sessionFactoryObj.openSession();
         sessionObj.beginTransaction();
         List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.login='"+u.getLogin()+"' AND U.password='"+u.getPassword()+"'").list();
         sessionObj.save(u);
@@ -51,13 +46,20 @@ public class UsersDAOImp implements UsersDAO {
     @SuppressWarnings("unchecked")
     public List<Users> list() {
         Session sessionObj;
-        SessionFactory sessionFactoryObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
 
-        sessionFactoryObj = configObj.buildSessionFactory();
-        sessionObj = sessionFactoryObj.openSession();
+        sessionObj.beginTransaction();
         List<Users> personList = sessionObj.createQuery("FROM Users").list();
         System.out.println("qlq"+personList);
+        sessionObj.getTransaction().commit();
         sessionObj.close();
+
+//        for(int i=0;i<personList.size();i++ ){
+//            System.out.println(personList.get(i).getPosts());
+//            for (int j=0;j<personList.get(i).getPosts().size();j++){
+//                System.out.println("\t"+personList.get(i).getPosts().get(j).getComment());
+//            }
+//        }
         return personList;
     }
 

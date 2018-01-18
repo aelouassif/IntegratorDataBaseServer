@@ -18,9 +18,9 @@ public class Posts implements Serializable{
     private String content;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     private Users user;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="post")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="post",fetch = FetchType.EAGER)
     private List<Comments> comment;
 
     public Posts(String date, String position, String content, Users user, List<Comments> comment) {

@@ -18,10 +18,8 @@ public class PostsDAOImp implements PostsDAO {
     @SuppressWarnings("unchecked")
     public void save(Posts p) {
         Session sessionObj;
-        SessionFactory sessionFactoryObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
 
-        sessionFactoryObj = configObj.buildSessionFactory();
-        sessionObj = sessionFactoryObj.openSession();
         sessionObj.beginTransaction();
         sessionObj.save(p);
         System.out.println(p);
@@ -32,10 +30,8 @@ public class PostsDAOImp implements PostsDAO {
     @SuppressWarnings("unchecked")
     public Posts find(Posts p) {
         Session sessionObj;
-        SessionFactory sessionFactoryObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
 
-        sessionFactoryObj = configObj.buildSessionFactory();
-        sessionObj = sessionFactoryObj.openSession();
         sessionObj.beginTransaction();
         List<Posts> postList = sessionObj.createQuery("FROM Posts p WHERE p.id='"+p.getId()+"'").list();
         sessionObj.save(p);
@@ -48,10 +44,9 @@ public class PostsDAOImp implements PostsDAO {
     @SuppressWarnings("unchecked")
     public List<Posts> list() {
         Session sessionObj;
-        SessionFactory sessionFactoryObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
+        sessionObj.beginTransaction();
 
-        sessionFactoryObj = configObj.buildSessionFactory();
-        sessionObj = sessionFactoryObj.openSession();
         List<Posts> postList = sessionObj.createQuery("FROM Posts").list();
         System.out.println("qlq"+postList);
         sessionObj.close();

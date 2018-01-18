@@ -15,9 +15,9 @@ public class Comments implements Serializable{
 
     private String date,position,content;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     private Users user;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     private Posts post;
 
     public Comments(String date, String position, String content, Users user, Posts post) {
@@ -26,6 +26,9 @@ public class Comments implements Serializable{
         this.content = content;
         this.user = user;
         this.post = post;
+    }
+
+    public Comments() {
     }
 
     public int getId() {

@@ -16,7 +16,7 @@ public class Routes implements Serializable {
     private String date;
     private String x_start,y_start,x_end,y_end;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Users> users;
 
     public Routes(String date, String x_start, String y_start, String x_end, String y_end, List<Users> users) {

@@ -22,11 +22,11 @@ public class Users implements Serializable{
     private String last_name;
     private String email;
 
-    @OneToMany(mappedBy="user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Posts> posts;
-    @ManyToMany(mappedBy="users",cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy="users",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Routes> routes;
-    @OneToMany(mappedBy="user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Comments> comments;
 
     public Users(String login, String password, String first_name, String last_name, String email, List<Posts> posts, List<Routes> routes, List<Comments> comments) {
