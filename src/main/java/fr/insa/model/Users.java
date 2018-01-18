@@ -1,8 +1,6 @@
 package fr.insa.model;
 
 
-import javafx.geometry.Pos;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
