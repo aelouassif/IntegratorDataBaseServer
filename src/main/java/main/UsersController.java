@@ -55,9 +55,9 @@ public class UsersController {
     }
     @RequestMapping("/test")
     public void test() throws InterruptedException {
-        Users users = new Users("login", "password", "first_name", "last_name", "email",
-                null,null,null);
-        new UsersDAOImp().save(users);
+//        Users users = new Users("login1", "password", "first_name", "last_name", "email",
+//                null,null,null);
+//        new UsersDAOImp().save(users);
 //
 //        Users users1 = new Users("login", "password", "first_name", "last_name", "email",
 //                null,null,null);
@@ -66,6 +66,11 @@ public class UsersController {
         Users users1 = new UsersDAOImp().find(new Users("login", "password", "lqq", null, null,
                 null,null,null));
         System.out.println(users1);
+        if(users1.getPosts()!=null && users1.getPosts().size()>0){
+            System.out.println((users1.getPosts().size()));
+            System.out.println("le commentaire est : " + users1.getPosts().get(0).getContent());
+        }
+
 //
 //        Posts p1 = new Posts( "date1", "position1", "content1", users1, null);
 //        Posts p2 = new Posts( "date2", "position2", "content2", users1, null);
