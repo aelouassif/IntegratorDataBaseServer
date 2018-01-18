@@ -34,7 +34,6 @@ public class UsersDAOImp implements UsersDAO {
 
         sessionObj.beginTransaction();
         List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.login='"+u.getLogin()+"' AND U.password='"+u.getPassword()+"'").list();
-        System.out.println("test" + personList);
         sessionObj.getTransaction().commit();
         sessionObj.close();
 
@@ -48,14 +47,14 @@ public class UsersDAOImp implements UsersDAO {
 
         sessionObj.beginTransaction();
         List<Users> personList = sessionObj.createQuery("FROM Users").list();
-        System.out.println("qlq"+personList);
+        System.out.println("personList : \n"+personList);
         sessionObj.getTransaction().commit();
         sessionObj.close();
 
 //        for(int i=0;i<personList.size();i++ ){
 //            System.out.println(personList.get(i).getPosts());
 //            for (int j=0;j<personList.get(i).getPosts().size();j++){
-//                System.out.println("\t"+personList.get(i).getPosts().get(j).getComment());
+//                System.out.println("\t"+personList.get(i).getPosts().get(j).getContent());
 //            }
 //        }
 

@@ -25,29 +25,21 @@ public class PostsDAOImp implements PostsDAO {
         sessionObj.close();
     }
 
-    @SuppressWarnings("unchecked")
-    public Posts find(Posts p) {
-        Session sessionObj;
-        sessionObj = configObj.buildSessionFactory().openSession();
-
-        sessionObj.beginTransaction();
-        List<Posts> postList = sessionObj.createQuery("FROM Posts p WHERE p.id='"+p.getId()+"'").list();
-        sessionObj.save(p);
-        System.out.println("test" + postList);
-        sessionObj.close();
-
-        return (postList.size()==1)?postList.get(0):new Posts(null,null,null,null,null);
-    }
 
     @SuppressWarnings("unchecked")
     public List<Posts> list() {
         Session sessionObj;
         sessionObj = configObj.buildSessionFactory().openSession();
-        sessionObj.beginTransaction();
 
+        sessionObj.beginTransaction();
         List<Posts> postList = sessionObj.createQuery("FROM Posts").list();
-        System.out.println("qlq"+postList);
+        System.out.println("postList : \n"+postList);
+        sessionObj.getTransaction().commit();
         sessionObj.close();
+
+//        for(int i=0;i<postList.size();i++){
+//            System.out.println(postList.get(i).getContent());
+//        }
         return postList;
     }
 }

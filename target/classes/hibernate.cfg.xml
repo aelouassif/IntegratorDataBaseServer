@@ -30,9 +30,9 @@
 		 <!--&lt;!&ndash;Heroku version&ndash;&gt;-->
 		<!--<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
 		<!--<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>-->
-		<!--<property name="hibernate.connection.url">jdbc:postgresql://ec2-54-217-218-80.eu-west-1.compute.amazonaws.com:5432/dmjq6jlkspc66</property>-->
-		<!--<property name="hibernate.connection.username">zjmshvcrltbdjs</property>-->
-		<!--<property name="hibernate.connection.password">cc1f29ad51a13acd2af6630432ae4c5755ec6703c630bc0db3e961debbbcd8a4</property>-->
+		<!--<property name="hibernate.connection.url">jdbc:postgresql://ec2-54-235-252-137.compute-1.amazonaws.com:5432/d177d4i3cgdmum</property>-->
+		<!--<property name="hibernate.connection.username">senanmafpmyxkq</property>-->
+		<!--<property name="hibernate.connection.password">e0ecbae57d41e28cb566db795d809dc9cfa3a610ac23701bd51af16fe589d1ac</property>-->
 		<!--<property name="hibernate.hbm2ddl.auto">update</property>-->
 
 		<!-- Mapping With Model Class Containing Annotations -->

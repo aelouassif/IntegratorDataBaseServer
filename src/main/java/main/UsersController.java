@@ -32,7 +32,7 @@ public class UsersController {
 
         return user;
     }
-    @RequestMapping("/insert")
+    @RequestMapping("/insertUser")
     public void insert(@RequestParam(value="login") String login, @RequestParam(value="password") String password,@RequestParam(value="first_name") String first_name,
                        @RequestParam(value="last_name") String last_name,@RequestParam(value="email") String email) {
         ModelAndView mv = new ModelAndView();
@@ -44,32 +44,27 @@ public class UsersController {
         user.setLast_name(last_name);
 
         UsersDAOImp usersDAOImp = new UsersDAOImp();
-//        usersDAOImp.save(user);
         usersDAOImp.save(user);
     }
 
-    @RequestMapping("/all")
+    @RequestMapping("/allUsers")
     public List<Users> all() {
         UsersDAOImp usersDAOImp = new UsersDAOImp();
         return usersDAOImp.list();
     }
-    @RequestMapping("/test")
-    public void test() throws InterruptedException {
+//    @RequestMapping("/test")
+//    public void test() throws InterruptedException {
 //        Users users = new Users("login1", "password", "first_name", "last_name", "email",
 //                null,null,null);
 //        new UsersDAOImp().save(users);
 //
-//        Users users1 = new Users("login", "password", "first_name", "last_name", "email",
-//                null,null,null);
-//        new UsersDAOImp().save(users1);
-
-        Users users1 = new UsersDAOImp().find(new Users("login", "password", "lqq", null, null,
-                null,null,null));
-        System.out.println(users1);
-        if(users1.getPosts()!=null && users1.getPosts().size()>0){
-            System.out.println((users1.getPosts().size()));
-            System.out.println("le commentaire est : " + users1.getPosts().get(0).getContent());
-        }
+//        Users users1 = new UsersDAOImp().find(new Users("login", "password", "lqq", null, null,
+//                null,null,null));
+//        System.out.println(users1);
+//        if(users1.getPosts()!=null && users1.getPosts().size()>0){
+//            System.out.println((users1.getPosts().size()));
+//            System.out.println("le commentaire est : " + users1.getPosts().get(0).getContent());
+//        }
 
 //
 //        Posts p1 = new Posts( "date1", "position1", "content1", users1, null);
@@ -77,8 +72,8 @@ public class UsersController {
 //        new PostsDAOImp().save(p1);
 //        new PostsDAOImp().save(p2);
 
+//        new UsersDAOImp().list();
 
 
-
-    }
+//    }
 }
