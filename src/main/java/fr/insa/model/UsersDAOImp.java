@@ -70,12 +70,13 @@ public class UsersDAOImp implements UsersDAO {
         sessionObj.getTransaction().commit();
         sessionObj.close();
 
-//        for(int i=0;i<personList.size();i++ ){
-//            System.out.println(personList.get(i).getPosts());
-//            for (int j=0;j<personList.get(i).getPosts().size();j++){
-//                System.out.println("\t"+personList.get(i).getPosts().get(j).getContent());
-//            }
-//        }
+        for(int i=0;i<personList.size();i++ ){
+            personList.get(i).setPosts(null);
+            personList.get(i).setComments(null);
+            personList.get(i).setRoutes(null);
+            System.out.println(personList.get(i).getPosts());
+
+        }
 
         return personList;
     }

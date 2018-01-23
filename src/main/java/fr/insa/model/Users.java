@@ -38,6 +38,22 @@ public class Users implements Serializable{
         this.comments = comments;
     }
 
+    public List<Routes> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<Routes> routes) {
+        this.routes = routes;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
+    }
+
     public List<Posts> getPosts() {
         return posts;
     }

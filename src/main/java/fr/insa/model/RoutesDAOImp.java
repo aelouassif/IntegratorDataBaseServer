@@ -35,9 +35,10 @@ public class RoutesDAOImp implements RoutesDAO {
         sessionObj.getTransaction().commit();
         sessionObj.close();
 
-//        for(int i=0;i<postList.size();i++){
-//            System.out.println(routeList.get(i).getDate());
-//        }
+        for(int i=0;i<routeList.size();i++){
+            routeList.get(i).setUsers(null);
+            System.out.println(routeList.get(i).getDate());
+        }
         return routeList;
     }
 }

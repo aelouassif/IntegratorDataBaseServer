@@ -31,6 +31,7 @@ public class PostsController {
 
     @RequestMapping("/allPosts")
     public List<Posts> all() {
+
         return new PostsDAOImp().list();
     }
     @RequestMapping("/test")

@@ -37,9 +37,11 @@ public class PostsDAOImp implements PostsDAO {
         sessionObj.getTransaction().commit();
         sessionObj.close();
 
-//        for(int i=0;i<postList.size();i++){
-//            System.out.println(postList.get(i).getContent());
-//        }
+        for(int i=0;i<postList.size();i++){
+            postList.get(i).setUser(null);
+            postList.get(i).setComment(null);
+            System.out.println(postList.get(i).getContent());
+        }
         return postList;
     }
 }
