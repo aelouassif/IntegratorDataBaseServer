@@ -1,9 +1,6 @@
 package main;
 
-import fr.insa.model.Posts;
-import fr.insa.model.PostsDAOImp;
-import fr.insa.model.Users;
-import fr.insa.model.UsersDAOImp;
+import fr.insa.model.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,12 +13,18 @@ public class PostsController {
 
 
     @RequestMapping("/insertPost")
-    public void insert(@RequestParam(value="content") String content, @RequestParam(value="date") String date,@RequestParam(value="position") String position) {
+    public void insert(@RequestParam(value="content") String content, @RequestParam(value="date") String date,@RequestParam(value="position") String position,
+                       @RequestParam(value="userId") String userId) {
+        Users user = new UsersDAOImp().findById(Integer.parseInt(userId));
+
         ModelAndView mv = new ModelAndView();
         Posts posts = new Posts();
         posts.setContent(content);
         posts.setDate(date);
         posts.setPosition(position);
+        posts.setUser(user);
+
+
 
         new PostsDAOImp().save(posts);
     }

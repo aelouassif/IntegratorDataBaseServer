@@ -32,6 +32,29 @@ public class UsersController {
 
         return user;
     }
+    @RequestMapping("/findUserById")
+    public Users findById(@RequestParam(value="userId") String userId) {
+        Users user = new Users();
+
+        UsersDAOImp usersDAOImp = new UsersDAOImp();
+//        usersDAOImp.save(user);
+        user = usersDAOImp.findById(Integer.parseInt(userId));
+        System.out.println(user);
+        return user;
+    }
+    @RequestMapping("/deleteUser")
+    public void delete(@RequestParam(value="login") String login, @RequestParam(value="password") String password) {
+        Users user = new Users();
+        user.setLogin(login);
+        user.setPassword(password);
+
+        UsersDAOImp usersDAOImp = new UsersDAOImp();
+//        usersDAOImp.save(user);
+        user = usersDAOImp.find(user);
+        if(user.getLogin()!=null){
+            new UsersDAOImp().delete(user);
+        }
+    }
     @RequestMapping("/insertUser")
     public void insert(@RequestParam(value="login") String login, @RequestParam(value="password") String password,@RequestParam(value="first_name") String first_name,
                        @RequestParam(value="last_name") String last_name,@RequestParam(value="email") String email) {

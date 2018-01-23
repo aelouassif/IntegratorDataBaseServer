@@ -26,7 +26,14 @@ public class UsersDAOImp implements UsersDAO {
         sessionObj.getTransaction().commit();
         sessionObj.close();
     }
-
+    public void delete(Users u) {
+        Session sessionObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
+        sessionObj.beginTransaction();
+        sessionObj.delete(u);
+        sessionObj.getTransaction().commit();
+        sessionObj.close();
+    }
     @SuppressWarnings("unchecked")
     public Users find(Users u) {
         Session sessionObj;
@@ -34,6 +41,18 @@ public class UsersDAOImp implements UsersDAO {
 
         sessionObj.beginTransaction();
         List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.login='"+u.getLogin()+"' AND U.password='"+u.getPassword()+"'").list();
+        sessionObj.getTransaction().commit();
+        sessionObj.close();
+
+        return (personList.size()==1)?personList.get(0):new Users(null,null,null,null,null,null,null,null);
+    }
+    @SuppressWarnings("unchecked")
+    public Users findById(int id) {
+        Session sessionObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
+
+        sessionObj.beginTransaction();
+        List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.id="+id+"").list();
         sessionObj.getTransaction().commit();
         sessionObj.close();
 
