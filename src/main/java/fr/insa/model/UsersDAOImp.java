@@ -51,17 +51,18 @@ public class UsersDAOImp implements UsersDAO {
     }
     @SuppressWarnings("unchecked")
     public Users findById(int id) {
+        Users user = new Users();
         Session sessionObj;
         sessionObj = configObj.buildSessionFactory().openSession();
-
         sessionObj.beginTransaction();
-        List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.id="+id+"").list();
+        user = (Users) sessionObj.get(Users.class,id);
         sessionObj.getTransaction().commit();
         sessionObj.close();
-        personList.get(0).setPosts(null);
-        personList.get(0).setComments(null);
-        personList.get(0).setRoutes(null);
-        return (personList.size()==1)?personList.get(0):new Users(null,null,null,null,null,null,null,null);
+
+        user.setRoutes(Transform.transformRoutes(user.getRoutes()));
+        user.setPosts(Transform.transformPosts(user.getPosts()));
+        user.setComments(Transform.transformComments(user.getComments()));
+        return user;
     }
 
     @SuppressWarnings("unchecked")
@@ -76,9 +77,9 @@ public class UsersDAOImp implements UsersDAO {
         sessionObj.close();
 
         for(int i=0;i<personList.size();i++ ){
-            personList.get(i).setPosts(null);
-            personList.get(i).setComments(null);
-            personList.get(i).setRoutes(null);
+            personList.get(i).setPosts(Transform.transformPosts(personList.get(i).getPosts()));
+            personList.get(i).setComments(Transform.transformComments(personList.get(i).getComments()));
+            personList.get(i).setRoutes(Transform.transformRoutes(personList.get(i).getRoutes()));
             System.out.println(personList.get(i).getPosts());
 
         }

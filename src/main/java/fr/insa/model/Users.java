@@ -19,6 +19,7 @@ public class Users implements Serializable{
     private String first_name;
     private String last_name;
     private String email;
+    private int route_id;
 
     @OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Posts> posts;
@@ -37,7 +38,13 @@ public class Users implements Serializable{
         this.routes = routes;
         this.comments = comments;
     }
+    public int getRoute_id() {
+        return route_id;
+    }
 
+    public void setRoute_id(int route_id) {
+        this.route_id = route_id;
+    }
     public List<Routes> getRoutes() {
         return routes;
     }

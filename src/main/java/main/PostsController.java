@@ -24,29 +24,21 @@ public class PostsController {
         posts.setPosition(position);
         posts.setUser(user);
 
-
-
         new PostsDAOImp().save(posts);
+    }
+    @RequestMapping("/findPostById")
+    public Posts findById(@RequestParam(value="postId") String postId) {
+        return new PostsDAOImp().findById(Integer.parseInt(postId));
+    }
+    @RequestMapping("/deletePost")
+    public void deletePost(@RequestParam(value="postId") String postId) {
+        PostsDAOImp postsDAOImp = new PostsDAOImp();
+        postsDAOImp.delete(postsDAOImp.findById(Integer.parseInt(postId)));
     }
 
     @RequestMapping("/allPosts")
     public List<Posts> all() {
 
         return new PostsDAOImp().list();
-    }
-    @RequestMapping("/test")
-    public void test() throws InterruptedException {
-
-
-//
-//        Posts p1 = new Posts( "date1", "position1", "content1", null, null);
-//        new PostsDAOImp().save(p1);
-
-//        Posts p2 = new Posts( "date2", "position2", "content2", users1, null);
-//        new PostsDAOImp().save(p2);
-
-        new PostsDAOImp().list();
-
-
     }
 }

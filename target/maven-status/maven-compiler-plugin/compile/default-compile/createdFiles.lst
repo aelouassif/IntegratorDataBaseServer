@@ -1,3 +1,5 @@
 fr/insa/model/Posts.class
+fr/insa/model/Transform.class
 fr/insa/model/PostsDAO.class
+main/CommentsController.class
 fr/insa/model/PostsDAOImp.class

@@ -32,14 +32,40 @@ public class CommentsDAOImp implements CommentsDAO {
 
         sessionObj.beginTransaction();
         List<Comments> commentsList = sessionObj.createQuery("FROM Comments ").list();
-        System.out.println("commentsList : \n"+commentsList);
         sessionObj.getTransaction().commit();
         sessionObj.close();
 
-//        for(int i=0;i<postList.size();i++){
-//            System.out.println(commentsList.get(i).getDate());
-//        }
+        for(int i=0;i<commentsList.size();i++){
+            commentsList.get(i).setPost(Transform.transformPost(commentsList.get(i).getPost()));
+            commentsList.get(i).setUser(Transform.transformUser(commentsList.get(i).getUser()));
+            System.out.println(commentsList.get(i).getDate());
+        }
         return commentsList;
+    }
+
+    @Override
+    public void delete(Comments c) {
+        Session sessionObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
+        sessionObj.beginTransaction();
+        sessionObj.delete(c);
+        sessionObj.getTransaction().commit();
+        sessionObj.close();
+
+    }
+
+    @Override
+    public Comments findById(int id) {
+        Comments comment = new Comments();
+        Session sessionObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
+        comment = (Comments) sessionObj.get(Comments.class,id);
+        sessionObj.beginTransaction();
+        sessionObj.close();
+
+        comment.setPost(Transform.transformPost(comment.getPost()));
+        comment.setUser(Transform.transformUser(comment.getUser()));
+        return comment;
 
     }
 }
