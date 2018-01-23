@@ -43,6 +43,9 @@ public class UsersDAOImp implements UsersDAO {
         List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.login='"+u.getLogin()+"' AND U.password='"+u.getPassword()+"'").list();
         sessionObj.getTransaction().commit();
         sessionObj.close();
+        personList.get(0).setPosts(null);
+        personList.get(0).setComments(null);
+        personList.get(0).setRoutes(null);
 
         return (personList.size()==1)?personList.get(0):new Users(null,null,null,null,null,null,null,null);
     }
@@ -55,7 +58,9 @@ public class UsersDAOImp implements UsersDAO {
         List<Users> personList = sessionObj.createQuery("FROM Users U WHERE U.id="+id+"").list();
         sessionObj.getTransaction().commit();
         sessionObj.close();
-
+        personList.get(0).setPosts(null);
+        personList.get(0).setComments(null);
+        personList.get(0).setRoutes(null);
         return (personList.size()==1)?personList.get(0):new Users(null,null,null,null,null,null,null,null);
     }
 
