@@ -26,6 +26,18 @@ public class UsersDAOImp implements UsersDAO {
         sessionObj.getTransaction().commit();
         sessionObj.close();
     }
+
+    @Override
+    public void update(Users u) {
+        Session sessionObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
+        sessionObj.beginTransaction();
+        sessionObj.update(u);
+        System.out.println(u);
+        sessionObj.getTransaction().commit();
+        sessionObj.close();
+    }
+
     public void delete(Users u) {
         Session sessionObj;
         sessionObj = configObj.buildSessionFactory().openSession();
@@ -86,5 +98,6 @@ public class UsersDAOImp implements UsersDAO {
 
         return personList;
     }
+
 
 }
