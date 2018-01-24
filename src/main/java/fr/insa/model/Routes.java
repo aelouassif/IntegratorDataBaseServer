@@ -28,6 +28,9 @@ public class Routes implements Serializable {
         this.users = users;
     }
 
+    public Routes() {
+    }
+
     public int getId() {
         return id;
     }

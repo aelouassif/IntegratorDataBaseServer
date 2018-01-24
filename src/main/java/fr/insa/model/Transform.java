@@ -20,6 +20,17 @@ public class Transform {
 
         return post;
     }
+    public static List<Users> transformUsers(List<Users> users){
+        if(users!=null){
+            for(int i=0;i<users.size();i++){
+                users.get(i).setPosts(null);
+                users.get(i).setComments(null);
+                users.get(i).setRoutes(null);
+            }
+        }
+
+        return users;
+    }
     public static List<Posts> transformPosts(List<Posts> posts){
         if(posts!=null){
             for(int i=0;i<posts.size();i++){

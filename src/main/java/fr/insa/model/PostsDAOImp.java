@@ -19,7 +19,6 @@ public class PostsDAOImp implements PostsDAO {
         sessionObj = configObj.buildSessionFactory().openSession();
         sessionObj.beginTransaction();
         sessionObj.save(p);
-        System.out.println(p);
         sessionObj.getTransaction().commit();
         sessionObj.close();
     }
@@ -32,7 +31,6 @@ public class PostsDAOImp implements PostsDAO {
 
         sessionObj.beginTransaction();
         List<Posts> postList = sessionObj.createQuery("FROM Posts").list();
-        System.out.println("postList : \n"+postList);
         sessionObj.getTransaction().commit();
         sessionObj.close();
 

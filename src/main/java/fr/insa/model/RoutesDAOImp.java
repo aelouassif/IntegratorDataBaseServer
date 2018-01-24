@@ -16,10 +16,8 @@ public class RoutesDAOImp implements RoutesDAO {
     public void save(Routes route) {
         Session sessionObj;
         sessionObj = configObj.buildSessionFactory().openSession();
-
         sessionObj.beginTransaction();
         sessionObj.save(route);
-        System.out.println(route);
         sessionObj.getTransaction().commit();
         sessionObj.close();
     }
@@ -28,7 +26,6 @@ public class RoutesDAOImp implements RoutesDAO {
     public List<Routes> list() {
         Session sessionObj;
         sessionObj = configObj.buildSessionFactory().openSession();
-
         sessionObj.beginTransaction();
         List<Routes> routeList = sessionObj.createQuery("FROM Routes ").list();
         System.out.println("routeList : \n"+routeList);
@@ -36,9 +33,33 @@ public class RoutesDAOImp implements RoutesDAO {
         sessionObj.close();
 
         for(int i=0;i<routeList.size();i++){
-            routeList.get(i).setUsers(null);
-            System.out.println(routeList.get(i).getDate());
+            routeList.get(i).setUsers(Transform.transformUsers(routeList.get(i).getUsers()));
         }
         return routeList;
+    }
+
+    @Override
+    public void delete(Routes r) {
+        Session sessionObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
+        sessionObj.beginTransaction();
+        sessionObj.delete(r);
+        sessionObj.getTransaction().commit();
+        sessionObj.close();
+
+    }
+
+    @Override
+    public Routes findById(int id) {
+        Routes route = new Routes();
+        Session sessionObj;
+        sessionObj = configObj.buildSessionFactory().openSession();
+        sessionObj.beginTransaction();
+        route = (Routes) sessionObj.get(Routes.class,id);
+        sessionObj.getTransaction().commit();
+        sessionObj.close();
+
+        route.setUsers(Transform.transformUsers(route.getUsers()));
+        return route;
     }
 }
